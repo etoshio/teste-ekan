@@ -17,7 +17,7 @@ A aplicação consiste em um crud de beneficiários de um plano de saúde.
 ## Back end
 Pré-requisitos: Java 17 e MySql Server
 
-Na aplicação, ao executar, serão criados as tabelas e a inserção do usuário para autenticação. Neste contexto foi utlizado a tecnologia do FLYWAY, que consiste na organização dos scripts SQLs dentro da aplicação.
+Na aplicação, ao executar, serão criados as tabelas e a inserção do usuário para autenticação. Neste contexto foi utlizado a tecnologia do FLYWAY, que consiste na organização e execução dos scripts SQLs dentro da aplicação.
 
 ```bash
 # clonar repositório
