@@ -23,13 +23,13 @@ Na aplicação, ao executar, serão criados as tabelas e a inserção do usuári
 # clonar repositório
 git clone https://github.com/etoshio/teste-ekan
 
-# acessar a pasta do teste-ekan
-cd teste-ekan
-
 # criar o schema no banco de dados - Mysql
 ekan
 
-# abrir o projeto com o IDE (eclipse ou intelliJ) e rodar o comando
+# abrir o projeto com o IDE (eclipse ou intelliJ) e abrir o application.yaml 
+alterar a propriedade url, username e password do banco de dados mysql
+
+# executar o comando
 mvn clean install
 
 # rodar aplicação
