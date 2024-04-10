@@ -7,11 +7,14 @@ A aplicação consiste em um crud de beneficiários de um plano de saúde.
 ## Back end
 - Java 17
 - Spring Boot 3.1.5
-- JPA / Hibernate
+- Spring JPA / Hibernate
+- Spring Security
+- Lombok
+- MapStruct
 - Maven
 - Flyway
-- MySql
 - OpenApi
+- Banco de Dados MySQL
 
 # Como executar o projeto
 ## Back end
