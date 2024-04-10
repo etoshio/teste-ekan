@@ -5,6 +5,7 @@ import br.com.ekan.teste.domain.BeneficiarioDTO;
 import br.com.ekan.teste.domain.DocumentoDTO;
 import br.com.ekan.teste.entity.Beneficiario;
 import br.com.ekan.teste.entity.Documento;
+import br.com.ekan.teste.exception.ValidacaoException;
 import br.com.ekan.teste.mapper.BeneficiarioMapper;
 import br.com.ekan.teste.mapper.DocumentoMapper;
 import br.com.ekan.teste.repository.BeneficiarioRepository;
@@ -35,7 +36,9 @@ public class BeneficiarioService {
 	}
 
 	public BeneficiarioDTO buscarPorId(Long id) {
-		return BeneficiarioMapper.INSTANCE.convert(beneficiarioRepository.findById(id).orElse(null));
+		Beneficiario beneficiario = beneficiarioRepository.findById(id)
+				.orElseThrow(() -> new ValidacaoException("Beneficiário não encontrado"));
+		return BeneficiarioMapper.INSTANCE.convert(beneficiario);
 	}
 
 	public BeneficiarioDTO criar(BeneficiarioDTO dto) {
@@ -58,11 +61,12 @@ public class BeneficiarioService {
 	@Transactional
 	public BeneficiarioDTO alterar(Long id, BeneficiarioAtualizarDTO dto) {
 		Beneficiario beneficiario = beneficiarioRepository.findById(id)
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Beneficiário não encontrado"));
+				.orElseThrow(() -> new ValidacaoException("Beneficiário não encontrado"));
 
 		beneficiario.setDataAtualizacao(LocalDateTime.now());
 		beneficiario.setNome(dto.getNome());
 		beneficiario.setTelefone(dto.getTelefone());
+		beneficiario.setDataNascimento(dto.getDataNascimento());
 
 		beneficiario = beneficiarioRepository.save(beneficiario);
 		BeneficiarioDTO beneficiarioDTO = BeneficiarioMapper.INSTANCE.convert(beneficiario);

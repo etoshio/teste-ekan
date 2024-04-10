@@ -29,7 +29,7 @@ public class BeneficiarioController {
 			@ApiResponse(responseCode = "200", description = "Sucesso na execução.",
 				content = { @Content(mediaType = "application/json",
 				array = @ArraySchema(schema = @Schema(implementation = BeneficiarioDTO.class))) }),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content), })
 	public ResponseEntity<?> buscarTodosBeneficiarios() {
 		return ResponseEntity.ok(beneficiarioService.buscarTodos());
@@ -38,7 +38,7 @@ public class BeneficiarioController {
 	@DeleteMapping("{id}")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "Registro excluído.", content = @Content),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content) })
 	public ResponseEntity deletarBeneficiario(@PathVariable final Long id) {
 		beneficiarioService.deletarBeneficiario(id);
@@ -48,7 +48,7 @@ public class BeneficiarioController {
 	@GetMapping("{id}")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso na execução.",
 			content = { @Content(mediaType = "application/json", schema = @Schema(implementation = BeneficiarioDTO.class)) }),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content), })
 	public ResponseEntity<BeneficiarioDTO> buscarBeneficiario(@PathVariable final Long id) {
 		return ResponseEntity.ok(beneficiarioService.buscarPorId(id));
@@ -57,7 +57,7 @@ public class BeneficiarioController {
 	@PostMapping
 	@ApiResponses(value = { @ApiResponse(responseCode = "201", description = "Criado com sucesso.",
 			content = { @Content(mediaType = "application/json", schema = @Schema(implementation = BeneficiarioDTO.class)) }),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content), })
 	public ResponseEntity<BeneficiarioDTO> criar(@RequestBody final BeneficiarioDTO dto) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(beneficiarioService.criar(dto));
@@ -66,7 +66,7 @@ public class BeneficiarioController {
 	@PutMapping("{id}")
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso na execução.",
 			content = { @Content(mediaType = "application/json", schema = @Schema(implementation = BeneficiarioDTO.class))}),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content), })
 	public ResponseEntity<BeneficiarioDTO> atualizar(@PathVariable final Long id, @RequestBody final BeneficiarioAtualizarDTO dto) {
 		return ResponseEntity.ok().body(beneficiarioService.alterar(id,dto));

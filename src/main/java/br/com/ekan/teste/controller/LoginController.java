@@ -27,7 +27,7 @@ public class LoginController {
 	@PostMapping
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso na execução.",
 			content = { @Content(mediaType = "application/json", schema = @Schema(implementation = TokenJwtDTO.class)) }),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content), })
 	public ResponseEntity<TokenJwtDTO> efetuarLogin(@RequestBody @Valid LoginDTO dto) {
 		

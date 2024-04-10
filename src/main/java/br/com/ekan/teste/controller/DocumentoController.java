@@ -29,7 +29,7 @@ public class DocumentoController {
 	@ApiResponses(value = { @ApiResponse(responseCode = "200", description = "Sucesso na execução.",
 				content = { @Content(mediaType = "application/json",
 						array = @ArraySchema(schema = @Schema(implementation = DocumentoDTO.class))) }),
-			@ApiResponse(responseCode = "403", description = "Não Autorizado", content = @Content),
+			@ApiResponse(responseCode = "401", description = "Não Autorizado", content = @Content),
 			@ApiResponse(responseCode = "500", description = "Foi gerada uma exceção", content = @Content), })
 	public ResponseEntity<List<DocumentoDTO>> buscarDocumentos(@PathVariable final Long beneficarioId) {
 		return ResponseEntity.ok(documentoService.buscarPorBeneficiarioId(beneficarioId));
